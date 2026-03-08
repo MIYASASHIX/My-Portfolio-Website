@@ -87,11 +87,14 @@ app.use((_req, res, next) => {
 
 // GET /api/content — public, returns the full content store
 app.get('/api/content', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
   res.json(readContent());
 });
 
 // POST /api/content — admin only, saves the full content store
 app.post('/api/content', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   const raw  = (req.headers['authorization'] || '').replace(/^Bearer\s+/i, '').trim();
   const valid = raw.length === 64 && /^[0-9a-f]+$/.test(raw) && raw === getAdminHash();
   if (!valid) return res.status(401).json({ error: 'Unauthorized' });
@@ -104,6 +107,7 @@ app.post('/api/content', (req, res) => {
 
 // POST /api/auth/password — change admin password (requires current hash)
 app.post('/api/auth/password', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   const { oldHash, newHash } = req.body || {};
   if (!oldHash || oldHash !== getAdminHash()) {
     return res.status(401).json({ error: 'Unauthorized' });
