@@ -1129,12 +1129,19 @@ html.is-transitioning * {
     grid-template-columns: 1fr;
   }
 
-  [dir="rtl"] .about-image {
-    order: unset;
+  .about-image {
+    display: flex;
+    justify-content: center;
+    order: -1; /* photo above text on mobile */
   }
 
-  .about-image {
-    display: none;
+  [dir="rtl"] .about-image {
+    order: -1; /* same in RTL */
+  }
+
+  .about-image .img-frame {
+    width: 160px;
+    height: 200px;
   }
 
   .project-card {
