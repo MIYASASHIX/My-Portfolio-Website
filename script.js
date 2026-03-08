@@ -1644,7 +1644,9 @@ if (document.readyState === 'loading') {
 
     // ── Step 2: sync from server in background, then re-apply ──
     syncFromServer().then(() => {
-      loadStoredPhoto();
+      // Note: photo is applied directly inside syncFromServer() to bypass
+      // localStorage quota limits — do NOT call loadStoredPhoto() here or
+      // it overwrites the photo with null if storageSet silently failed.
       applyStoredContent();
       applyEndpoint();
       applyLanguage(document.documentElement.getAttribute('data-lang') || 'en');
