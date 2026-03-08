@@ -469,7 +469,7 @@ if (document.readyState === 'loading') {
    * Silently fails if offline or unauthenticated — localStorage is always updated first.
    */
   async function pushToServer() {
-    const hash = storageGet(STORAGE_ADMIN_HASH);
+    const hash = getStoredHash(); // uses DEFAULT_HASH fallback if password was never changed
     if (!hash) return;
     const payload = getContent();
     payload.photo        = storageGet('pf_photo')         || null;
