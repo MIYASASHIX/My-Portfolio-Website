@@ -124,8 +124,8 @@ const PUBLIC_DIR = path.join(__dirname);
 
 app.use(
   express.static(PUBLIC_DIR, {
-    // Cache static assets for 1 day in production, no cache in dev
-    maxAge: process.env.NODE_ENV === 'production' ? '1d' : 0,
+    // Cache static assets for 10 minutes in production, no cache in dev
+    maxAge: process.env.NODE_ENV === 'production' ? '10m' : 0,
     // Don't expose directory listings
     index: false,
     // Send ETag headers for cache validation
