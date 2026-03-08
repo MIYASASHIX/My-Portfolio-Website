@@ -495,7 +495,15 @@ if (document.readyState === 'loading') {
       const res = await fetch('/api/content');
       if (!res.ok) return;
       const data = await res.json();
-      if (!data || typeof data !== 'object' || !Object.keys(data).length) return;
+      if (!data || typeof data !== 'object') return;
+      // Empty object on server = admin reset — clear all local overrides so
+      // every device falls back to the default HTML content
+      if (!Object.keys(data).length) {
+        try { localStorage.removeItem(STORAGE_CONTENT); }    catch {}
+        try { localStorage.removeItem('pf_photo'); }         catch {}
+        try { localStorage.removeItem('pf_form_endpoint'); } catch {}
+        return;
+      }
 
       // Extract non-content keys before storing
       const photo        = Object.prototype.hasOwnProperty.call(data, 'photo')        ? data.photo        : undefined;
