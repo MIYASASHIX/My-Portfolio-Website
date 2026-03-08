@@ -603,10 +603,44 @@ input, textarea { font: inherit; }
   animation: pulse-green 2s ease-in-out infinite;
 }
 
+/* Red status — unavailable */
+.meta-val.available[data-status-color="red"]::before {
+  background: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.2);
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
 @keyframes pulse-green {
   0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
   50%       { box-shadow: 0 0 0 6px rgba(34,197,94,.05); }
 }
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(239,68,68,.2); }
+  50%       { box-shadow: 0 0 0 6px rgba(239,68,68,.05); }
+}
+
+/* Status row wrapper */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Admin toggle button for status color */
+.status-toggle-btn {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--r-full);
+  border: 2px solid var(--border);
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.status-toggle-btn:hover { transform: scale(1.2); border-color: var(--text-muted); }
+body.admin-mode .status-toggle-btn { display: inline-flex; }
 
 /* About image */
 .about-image {

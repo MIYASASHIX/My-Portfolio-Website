@@ -17,7 +17,7 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Kufi+Arabic:wght@100..900&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=1.2.2" />
+  <link rel="stylesheet" href="styles.css?v=1.2.3" />
 </head>
 <body class="content-loading">
 
@@ -118,7 +118,10 @@
               </div>
               <div class="meta-item">
                 <span class="meta-label" data-en="Status" data-ar="الحالة">Status</span>
-                <span class="meta-val available" data-field="about.status" data-en="Available for hire" data-ar="متاح للعمل">Available for hire</span>
+                <div class="status-row">
+                  <span class="meta-val available" data-field="about.status" data-status-color="green" data-en="Available for hire" data-ar="متاح للعمل">Available for hire</span>
+                  <button class="admin-only status-toggle-btn" data-action="toggle-status" title="Toggle green / red"></button>
+                </div>
               </div>
             </div>
           </div>
@@ -677,6 +680,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=1.2.2"></script>
+  <script src="script.js?v=1.2.3"></script>
 </body>
 </html>

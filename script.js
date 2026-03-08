@@ -514,10 +514,12 @@ if (document.readyState === 'loading') {
       // Persist content to localStorage
       saveContentStore(data);
 
-      // Persist photo (null means explicitly removed)
+      // Persist + apply photo directly (don't rely on localStorage re-read —
+      // large base64 images can exceed localStorage quota and silently fail)
       if (photo !== undefined) {
         if (photo) { storageSet('pf_photo', photo); }
         else        { try { localStorage.removeItem('pf_photo'); } catch {} }
+        applyStoredPhoto(photo || null);
       }
 
       // Persist Formspree endpoint
@@ -606,6 +608,10 @@ if (document.readyState === 'loading') {
       });
     });
 
+    // Snapshot status dot color
+    const statusEl = document.querySelector('[data-field="about.status"]');
+    data.statusColor = statusEl?.getAttribute('data-status-color') || 'green';
+
     saveContentStore(data);
     pushToServer();
   }
@@ -656,6 +662,12 @@ if (document.readyState === 'loading') {
     // Rebuild project cards if stored
     if (data.projects && data.projects.length > 0) {
       renderProjectsFromData(data.projects);
+    }
+
+    // Restore status dot color
+    if (data.statusColor) {
+      const statusEl = document.querySelector('[data-field="about.status"]');
+      if (statusEl) statusEl.setAttribute('data-status-color', data.statusColor);
     }
 
     // Re-apply language to refresh visible text
@@ -1325,6 +1337,15 @@ if (document.readyState === 'loading') {
     if (action === 'remove-fc')      { e.stopPropagation(); if (confirm('Remove this stat card?')) removeFc(id); }
     if (action === 'edit-link')      { e.preventDefault(); e.stopPropagation(); openLinkDialog(btn.getAttribute('data-id')); }
     if (action === 'remove-link')    { e.preventDefault(); e.stopPropagation(); if (confirm('Remove this social link?')) removeSocialLink(btn.getAttribute('data-id')); }
+    if (action === 'toggle-status') {
+      e.stopPropagation();
+      const statusEl = document.querySelector('[data-field="about.status"]');
+      if (statusEl) {
+        const current = statusEl.getAttribute('data-status-color') || 'green';
+        statusEl.setAttribute('data-status-color', current === 'green' ? 'red' : 'green');
+        snapshotAndSave();
+      }
+    }
   });
 
   /* ── Click on [data-field] to edit text ─────────────── */
