@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ruby --version)",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(/usr/local/bin/node --version)",
+      "Bash(/opt/homebrew/bin/node --version)",
+      "Bash(brew list node)",
+      "Bash(~/.nvm/versions/node/v24.14.0/bin/npm install)",
+      "Bash(export PATH=\"$HOME/.nvm/versions/node/v24.14.0/bin:$PATH\")",
+      "Bash(npm install)",
+      "Bash(git remote set-url origin git@github.com:MIYASASHIX/My-Portfolio-Website.git)",
+      "Bash(GIT_SSH_COMMAND=\"ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new\" git push -u origin main)",
+      "Bash(git -C /Volumes/DRIVE/Claude/NW add server.js script.js index.html .gitignore)",
+      "Bash(git -C /Volumes/DRIVE/Claude/NW status)",
+      "Bash(git -C:*)",
+      "Bash(GIT_SSH_COMMAND=\"ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new\" git -C /Volumes/DRIVE/Claude/NW push origin main)",
+      "Bash(export NVM_DIR=\"$HOME/.nvm\")",
+      "Bash(source \"$NVM_DIR/nvm.sh\")",
+      "Bash(git add server.js)",
+      "Bash(git commit:*)",
+      "Bash(GIT_SSH_COMMAND=\"ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new\" git push origin main)",
+      "Bash(curl -s -w \"\\\\nHTTP %{http_code}\" https://goldenrod-dogfish-759013.hostingersite.com/api/content)",
+      "Bash(curl -s https://goldenrod-dogfish-759013.hostingersite.com/api/content)",
+      "Bash(curl -s -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918\" -d '{}' https://goldenrod-dogfish-759013.hostingersite.com/api/content)",
+      "Bash(curl -s -w \"HTTP %{http_code}\" -X POST -H \"Content-Type: application/json\" -H \"Authorization: Bearer 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918\" -d '{\"\"fields\"\":{\"\"hero.name\"\":{\"\"en\"\":\"\"Test\"\",\"\"ar\"\":\"\"Test\"\"}}}' https://goldenrod-dogfish-759013.hostingersite.com/api/content)",
+      "Bash(git add index.html script.js)",
+      "Bash(lsof -i :3000)",
+      "Bash(kill 43031)",
+      "Bash(git add script.js)",
+      "Bash(git add -A)"
+    ]
+  }
+}
