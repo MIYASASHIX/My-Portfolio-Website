@@ -1598,21 +1598,28 @@ if (document.readyState === 'loading') {
   }
 
   /* ── Init admin module ──────────────────────────────── */
-  async function initAdmin() {
+  function applyEndpoint() {
+    const ep = (() => { try { return localStorage.getItem('pf_form_endpoint'); } catch (_) { return null; } })();
+    if (ep) { const f = document.getElementById('contactForm'); if (f) f.setAttribute('action', ep); }
+  }
+
+  function initAdmin() {
     wireAdminButtons();
-    // Fetch latest content from server first (so all devices stay in sync)
-    await syncFromServer();
+
+    // ── Step 1: apply localStorage instantly — no flash of default content ──
     loadStoredPhoto();
-    // Apply any previously saved content on every page load
     applyStoredContent();
-    // Restore saved Formspree endpoint
-    const savedEndpoint = (() => { try { return localStorage.getItem('pf_form_endpoint'); } catch (_) { return null; } })();
-    if (savedEndpoint) {
-      const formEl = document.getElementById('contactForm');
-      if (formEl) formEl.setAttribute('action', savedEndpoint);
-    }
-    // If session was active (same tab, rare — e.g. HMR), restore admin mode
+    applyEndpoint();
     if (isLoggedIn()) enterAdminMode();
+
+    // ── Step 2: sync from server in background, then silently re-apply ──
+    syncFromServer().then(() => {
+      loadStoredPhoto();
+      applyStoredContent();
+      applyEndpoint();
+      // Re-run language pass so freshly-applied data-en/ar attrs render correctly
+      applyLanguage(document.documentElement.getAttribute('data-lang') || 'en');
+    });
   }
 
   if (document.readyState === 'loading') {
