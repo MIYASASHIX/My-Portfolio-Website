@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
-  "description": "Personal portfolio website with bilingual (EN/AR) support and admin CMS",
+  "version": "1.2.0",
+  "description": "Personal portfolio website with bilingual (EN/AR) support, admin CMS, and server-side content sync",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
