@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https://formspree.io; form-action https://formspree.io 'self'; base-uri 'self';" />
+  <meta name="description" content="Portfolio – Developer & Designer" />
+  <title class="page-title">Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Kufi+Arabic:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="nav-brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name" data-field="nav.brand" data-en="Portfolio" data-ar="ملف الأعمال">Portfolio</span>
+    </div>
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
+      <a href="#about"    class="nav-link" data-en="About"    data-ar="عني">About</a>
+      <a href="#skills"   class="nav-link" data-en="Skills"   data-ar="مهاراتي">Skills</a>
+      <a href="#projects" class="nav-link" data-en="Projects" data-ar="مشاريعي">Projects</a>
+      <a href="#contact"  class="nav-link" data-en="Contact"  data-ar="تواصل">Contact</a>
+    </nav>
+    <div class="nav-controls">
+      <button class="ctrl-btn lang-btn" id="langToggle" aria-label="Toggle language" title="العربية / English">
+        <span class="lang-icon" data-en="ع" data-ar="EN">ع</span>
+      </button>
+      <button class="ctrl-btn theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" id="themeIcon">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── HERO ──────────────────────────────────────────── -->
+  <main>
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="hero-content">
+        <p class="hero-greeting" data-field="hero.greeting" data-en="Hello, I'm" data-ar="مرحباً، أنا">Hello, I'm</p>
+        <h1 class="hero-name">
+          <span class="name-word"        data-field="hero.name"    data-en="Alex"   data-ar="أليكس">Alex</span>
+          <span class="name-word accent" data-field="hero.surname" data-en="Mercer" data-ar="ميرسر">Mercer</span>
+        </h1>
+        <p class="hero-title" data-field="hero.title" data-en="Full-Stack Developer &amp; UI Designer" data-ar="مطور متكامل ومصمم واجهات">Full-Stack Developer &amp; UI Designer</p>
+        <p class="hero-sub"   data-field="hero.sub"   data-en="I build precise, elegant, and performant digital experiences." data-ar="أبني تجارب رقمية دقيقة وأنيقة وعالية الأداء.">I build precise, elegant, and performant digital experiences.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary" data-en="View Work"     data-ar="أعمالي">View Work</a>
+          <a href="#contact"  class="btn btn-outline" data-en="Get In Touch"  data-ar="تواصل معي">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="grid-canvas">
+          <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+          <div class="grid-dot"></div><div class="grid-dot gd-accent"></div><div class="grid-dot"></div>
+          <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+          <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot gd-accent"></div>
+          <div class="grid-dot gd-accent"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+          <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+        </div>
+        <div class="floating-card fc-1" data-fc-id="0">
+          <div class="admin-card-controls admin-only">
+            <button class="admin-edit-btn" data-action="edit-fc" data-id="0">✏</button>
+            <button class="admin-remove-btn" data-action="remove-fc" data-id="0">×</button>
+          </div>
+          <span class="fc-label" data-field="hero.fc1.label" data-en="Projects" data-ar="مشاريع">Projects</span>
+          <span class="fc-val" data-field="hero.fc1.val" data-en="24+" data-ar="24+">24+</span>
+        </div>
+        <div class="floating-card fc-2" data-fc-id="1">
+          <div class="admin-card-controls admin-only">
+            <button class="admin-edit-btn" data-action="edit-fc" data-id="1">✏</button>
+            <button class="admin-remove-btn" data-action="remove-fc" data-id="1">×</button>
+          </div>
+          <span class="fc-label" data-field="hero.fc2.label" data-en="Exp. Years" data-ar="سنوات خبرة">Exp. Years</span>
+          <span class="fc-val" data-field="hero.fc2.val" data-en="5+" data-ar="5+">5+</span>
+        </div>
+        <div class="admin-add-row admin-only fc-add-row">
+          <button class="admin-add-btn" id="addFcBtn">+ Add Stat Card</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ─────────────────────────────────────────── -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-tag" data-field="about.tag" data-en="01 / About" data-ar="01 / عني">01 / About</span>
+          <h2 class="section-title" id="about-heading" data-field="about.heading" data-en="Who I Am" data-ar="من أنا">Who I Am</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p data-field="about.p1" data-en="I'm a full-stack developer with a strong passion for crafting clean, accessible, and high-performance applications. I love turning complex problems into simple, beautiful interfaces." data-ar="أنا مطور متكامل لدي شغف حقيقي بصنع تطبيقات نظيفة وسهلة الوصول وعالية الأداء. أحب تحويل المشكلات المعقدة إلى واجهات بسيطة وجميلة.">I'm a full-stack developer with a strong passion for crafting clean, accessible, and high-performance applications. I love turning complex problems into simple, beautiful interfaces.</p>
+            <p data-field="about.p2" data-en="When I'm not coding, you'll find me exploring type design, reading about systems, or brewing specialty coffee." data-ar="عندما لا أكون أكتب الكود، ستجدني أستكشف تصميم الخطوط، أو أقرأ عن الأنظمة، أو أحضر قهوة متخصصة.">When I'm not coding, you'll find me exploring type design, reading about systems, or brewing specialty coffee.</p>
+            <div class="about-meta">
+              <div class="meta-item">
+                <span class="meta-label" data-en="Location" data-ar="الموقع">Location</span>
+                <span class="meta-val" data-field="about.location" data-en="Remote — Worldwide" data-ar="عن بُعد — في كل مكان">Remote — Worldwide</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label" data-en="Status" data-ar="الحالة">Status</span>
+                <span class="meta-val available" data-field="about.status" data-en="Available for hire" data-ar="متاح للعمل">Available for hire</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image" aria-hidden="true">
+            <div class="img-frame">
+              <div class="img-placeholder">
+                <img id="profilePhoto" class="profile-photo hidden" alt="Profile photo" />
+                <svg id="profilePhotoPlaceholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="38" r="20" fill="currentColor" opacity="0.3"/>
+                  <ellipse cx="50" cy="85" rx="32" ry="20" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <div class="photo-upload-overlay admin-only">
+                  <label class="photo-upload-label" for="photoInput" title="Upload photo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Upload Photo
+                  </label>
+                  <input type="file" id="photoInput" accept="image/*" class="hidden" />
+                  <button class="photo-remove-btn hidden" id="photoRemoveBtn" title="Remove photo">× Remove</button>
+                </div>
+              </div>
+              <div class="img-border-accent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SKILLS ────────────────────────────────────────── -->
+    <section class="section section-alt" id="skills" aria-labelledby="skills-heading">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-tag" data-field="skills.tag" data-en="02 / Skills" data-ar="02 / مهاراتي">02 / Skills</span>
+          <h2 class="section-title" id="skills-heading" data-field="skills.heading" data-en="What I Do" data-ar="ماذا أفعل">What I Do</h2>
+        </div>
+        <div class="skills-grid" id="skillsGrid">
+
+          <div class="skill-card" data-skill-id="0">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-skill" data-id="0" aria-label="Edit skill">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-skill" data-id="0" aria-label="Remove skill">×</button>
+            </div>
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="skill-title" data-field="skill.0.title" data-en="Frontend" data-ar="الواجهة الأمامية">Frontend</h3>
+            <p class="skill-desc"   data-field="skill.0.desc"  data-en="React, Vue, TypeScript, and cutting-edge CSS for pixel-perfect UIs." data-ar="React وVue وTypeScript وCSS متطور لواجهات بدقة بكسل.">React, Vue, TypeScript, and cutting-edge CSS for pixel-perfect UIs.</p>
+            <ul class="skill-tags" data-field="skill.0.tags" aria-label="Technologies">
+              <li>React</li><li>TypeScript</li><li>Tailwind</li><li>Next.js</li>
+            </ul>
+          </div>
+
+          <div class="skill-card" data-skill-id="1">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-skill" data-id="1" aria-label="Edit skill">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-skill" data-id="1" aria-label="Remove skill">×</button>
+            </div>
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="skill-title" data-field="skill.1.title" data-en="Backend" data-ar="الواجهة الخلفية">Backend</h3>
+            <p class="skill-desc"   data-field="skill.1.desc"  data-en="Scalable APIs and server architecture with Node, Python, and Go." data-ar="واجهات برمجية قابلة للتوسع وبنية خادم بـNode وPython وGo.">Scalable APIs and server architecture with Node, Python, and Go.</p>
+            <ul class="skill-tags" data-field="skill.1.tags" aria-label="Technologies">
+              <li>Node.js</li><li>Python</li><li>PostgreSQL</li><li>Redis</li>
+            </ul>
+          </div>
+
+          <div class="skill-card" data-skill-id="2">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-skill" data-id="2" aria-label="Edit skill">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-skill" data-id="2" aria-label="Remove skill">×</button>
+            </div>
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 class="skill-title" data-field="skill.2.title" data-en="DevOps" data-ar="الدفع والتشغيل">DevOps</h3>
+            <p class="skill-desc"   data-field="skill.2.desc"  data-en="CI/CD pipelines, Docker, Kubernetes, and cloud infrastructure on AWS." data-ar="خطوط CI/CD وDocker وKubernetes وبنية سحابية على AWS.">CI/CD pipelines, Docker, Kubernetes, and cloud infrastructure on AWS.</p>
+            <ul class="skill-tags" data-field="skill.2.tags" aria-label="Technologies">
+              <li>Docker</li><li>AWS</li><li>GitHub Actions</li><li>Terraform</li>
+            </ul>
+          </div>
+
+          <div class="skill-card" data-skill-id="3">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-skill" data-id="3" aria-label="Edit skill">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-skill" data-id="3" aria-label="Remove skill">×</button>
+            </div>
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="skill-title" data-field="skill.3.title" data-en="Design" data-ar="التصميم">Design</h3>
+            <p class="skill-desc"   data-field="skill.3.desc"  data-en="UI/UX systems, design tokens, accessibility, and Figma prototyping." data-ar="أنظمة UI/UX ورموز التصميم وإمكانية الوصول والنماذج في Figma.">UI/UX systems, design tokens, accessibility, and Figma prototyping.</p>
+            <ul class="skill-tags" data-field="skill.3.tags" aria-label="Technologies">
+              <li>Figma</li><li>Design Systems</li><li>WCAG</li><li>Motion</li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- Admin: add skill slot -->
+        <div class="admin-add-row admin-only">
+          <button class="admin-add-btn" id="addSkillBtn">+ Add Skill Card</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ──────────────────────────────────────── -->
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-tag" data-field="projects.tag" data-en="03 / Projects" data-ar="03 / مشاريعي">03 / Projects</span>
+          <h2 class="section-title" id="projects-heading" data-field="projects.heading" data-en="Selected Work" data-ar="أبرز الأعمال">Selected Work</h2>
+        </div>
+        <div class="projects-list" id="projectsList">
+
+          <article class="project-card" data-project-id="0" tabindex="0">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-project" data-id="0">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-project" data-id="0">×</button>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <span class="project-year">2024</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" data-field="project.0.title" data-en="Nexus Dashboard"  data-ar="لوحة نيكسوس">Nexus Dashboard</h3>
+              <p class="project-desc"  data-field="project.0.desc"  data-en="A real-time analytics platform with advanced data visualizations built with React and D3.js." data-ar="منصة تحليلات فورية مع تصورات بيانات متقدمة باستخدام React وD3.js.">A real-time analytics platform with advanced data visualizations built with React and D3.js.</p>
+              <div class="project-stack" data-field="project.0.stack">
+                <span>React</span><span>D3.js</span><span>WebSocket</span><span>Node.js</span>
+              </div>
+            </div>
+            <div class="project-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </article>
+
+          <article class="project-card" data-project-id="1" tabindex="0">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-project" data-id="1">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-project" data-id="1">×</button>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <span class="project-year">2024</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" data-field="project.1.title" data-en="Pulse Commerce"  data-ar="بلس كومرس">Pulse Commerce</h3>
+              <p class="project-desc"  data-field="project.1.desc"  data-en="A headless e-commerce engine with sub-100ms page loads and multi-currency support." data-ar="محرك تجارة إلكترونية بدون رأس مع أوقات تحميل أقل من 100ms ودعم متعدد العملات.">A headless e-commerce engine with sub-100ms page loads and multi-currency support.</p>
+              <div class="project-stack" data-field="project.1.stack">
+                <span>Next.js</span><span>Stripe</span><span>PostgreSQL</span><span>Redis</span>
+              </div>
+            </div>
+            <div class="project-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </article>
+
+          <article class="project-card" data-project-id="2" tabindex="0">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-project" data-id="2">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-project" data-id="2">×</button>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">03</span>
+              <span class="project-year">2023</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" data-field="project.2.title" data-en="Strata CMS"  data-ar="نظام ستراتا">Strata CMS</h3>
+              <p class="project-desc"  data-field="project.2.desc"  data-en="An open-source CMS with a block editor, live preview, and multi-language publishing." data-ar="نظام إدارة محتوى مفتوح المصدر بمحرر كتل ومعاينة مباشرة ونشر متعدد اللغات.">An open-source CMS with a block editor, live preview, and multi-language publishing.</p>
+              <div class="project-stack" data-field="project.2.stack">
+                <span>Vue 3</span><span>Python</span><span>FastAPI</span><span>MongoDB</span>
+              </div>
+            </div>
+            <div class="project-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </article>
+
+          <article class="project-card" data-project-id="3" tabindex="0">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-project" data-id="3">✏ Edit</button>
+              <button class="admin-remove-btn" data-action="remove-project" data-id="3">×</button>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">04</span>
+              <span class="project-year">2023</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" data-field="project.3.title" data-en="Forma Design System"  data-ar="نظام فورما التصميمي">Forma Design System</h3>
+              <p class="project-desc"  data-field="project.3.desc"  data-en="A component library and token system powering 5+ products with full WCAG 2.1 AA compliance." data-ar="مكتبة مكونات ونظام رموز يدعم 5+ منتجات مع امتثال كامل لـ WCAG 2.1 AA.">A component library and token system powering 5+ products with full WCAG 2.1 AA compliance.</p>
+              <div class="project-stack" data-field="project.3.stack">
+                <span>Storybook</span><span>TypeScript</span><span>Figma</span><span>CSS</span>
+              </div>
+            </div>
+            <div class="project-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </article>
+
+        </div>
+        <!-- Admin: add project slot -->
+        <div class="admin-add-row admin-only">
+          <button class="admin-add-btn" id="addProjectBtn">+ Add Project</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ───────────────────────────────────────── -->
+    <section class="section section-alt" id="contact" aria-labelledby="contact-heading">
+      <div class="section-inner contact-inner">
+        <div class="section-header">
+          <span class="section-tag" data-field="contact.tag" data-en="04 / Contact" data-ar="04 / تواصل">04 / Contact</span>
+          <h2 class="section-title" id="contact-heading" data-field="contact.heading" data-en="Let's Build Together" data-ar="لنبني معاً">Let's Build Together</h2>
+        </div>
+        <p class="contact-lead" data-field="contact.lead" data-en="Have a project in mind or want to talk? I'd love to hear from you." data-ar="لديك مشروع في ذهنك أو تريد التحدث؟ يسعدني سماعك.">Have a project in mind or want to talk? I'd love to hear from you.</p>
+
+        <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" novalidate aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" data-en="Name" data-ar="الاسم">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name"
+                placeholder-en="Your name" placeholder-ar="اسمك" data-en="Your name" data-ar="اسمك"/>
+              <span class="field-error" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email"
+                placeholder-en="your@email.com" placeholder-ar="بريدك@الإلكتروني.com"
+                data-en="your@email.com" data-ar="بريدك@الإلكتروني.com"/>
+              <span class="field-error" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" data-en="Message" data-ar="الرسالة">Message</label>
+            <textarea id="message" name="message" rows="5" required
+              placeholder-en="Tell me about your project..." placeholder-ar="أخبرني عن مشروعك..."
+              data-en="Tell me about your project..." data-ar="أخبرني عن مشروعك..."></textarea>
+            <span class="field-error" role="alert"></span>
+          </div>
+          <button type="submit" class="btn btn-primary submit-btn">
+            <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+
+        <div class="contact-links" role="list" aria-label="Social links">
+          <a href="https://github.com" class="social-link" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-link-id="social.github" data-href="https://github.com" data-platform="github">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-link" data-id="social.github">✏</button>
+              <button class="admin-remove-btn" data-action="remove-link" data-id="social.github">×</button>
+            </div>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-field="social.github.label" data-en="GitHub" data-ar="GitHub">GitHub</span>
+          </a>
+          <a href="https://linkedin.com" class="social-link" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-link-id="social.linkedin" data-href="https://linkedin.com" data-platform="linkedin">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-link" data-id="social.linkedin">✏</button>
+              <button class="admin-remove-btn" data-action="remove-link" data-id="social.linkedin">×</button>
+            </div>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span data-field="social.linkedin.label" data-en="LinkedIn" data-ar="LinkedIn">LinkedIn</span>
+          </a>
+          <a href="mailto:hello@example.com" class="social-link" role="listitem" aria-label="Email" data-link-id="social.email" data-href="mailto:hello@example.com" data-platform="email">
+            <div class="admin-card-controls admin-only">
+              <button class="admin-edit-btn" data-action="edit-link" data-id="social.email">✏</button>
+              <button class="admin-remove-btn" data-action="remove-link" data-id="social.email">×</button>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-field="social.email.label" data-en="hello@example.com" data-ar="hello@example.com">hello@example.com</span>
+          </a>
+        </div>
+        <!-- Admin: add social link slot -->
+        <div class="admin-add-row admin-only" id="socialAddRow">
+          <button class="admin-add-btn" id="addSocialBtn">+ Add Social Link</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        <span data-field="footer.copy" data-en="© 2025 Alex Mercer. Crafted with precision." data-ar="© 2025 أليكس ميرسر. صُنع بدقة.">© 2025 Alex Mercer. Crafted with precision.</span>
+      </p>
+      <p class="footer-stack" data-field="footer.stack" data-en="HTML · CSS · JavaScript · No frameworks" data-ar="HTML · CSS · JavaScript · بدون أطر عمل">HTML · CSS · JavaScript · No frameworks</p>
+      <!-- Hidden admin access link -->
+      <button class="admin-access-btn" id="adminAccessBtn" aria-label="Admin access" title="Admin">⬡</button>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════
+       ADMIN UI
+       ════════════════════════════════════════════════════ -->
+
+  <!-- Admin Floating Bar -->
+  <div id="adminBar" class="admin-bar hidden" role="toolbar" aria-label="Admin controls">
+    <div class="abar-left">
+      <span class="abar-badge">✏ Admin Mode</span>
+      <span class="abar-hint">Click highlighted text to edit · ＋ to add · × to remove</span>
+    </div>
+    <div class="abar-right">
+      <button class="abar-btn abar-save"    id="adminSaveBtn">Save All</button>
+      <button class="abar-btn abar-outline" id="adminSettingsBtn">Settings</button>
+      <button class="abar-btn abar-outline" id="adminLogoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div id="adminLoginOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+    <div class="admin-modal am-small">
+      <div class="am-header">
+        <h2 id="adminLoginTitle" class="am-title">Admin Access</h2>
+        <button class="am-close" id="adminLoginClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <p class="am-desc">Enter your password to enable editing mode.</p>
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" autocomplete="current-password" placeholder="••••••••" />
+          <span class="field-error" id="adminPasswordError" role="alert"></span>
+        </div>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="adminLoginBtn">Login</button>
+        <button class="btn btn-outline" id="adminLoginCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Field Popover -->
+  <div id="editPopover" class="edit-popover hidden" role="dialog" aria-label="Edit content">
+    <div class="ep-header">
+      <span class="ep-title" id="epTitle">Edit Text</span>
+      <button class="am-close" id="epClose" aria-label="Close">×</button>
+    </div>
+    <div class="ep-body">
+      <div class="form-group">
+        <label for="ep-en">🇬🇧 English</label>
+        <textarea id="ep-en" rows="3" spellcheck="true"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="ep-ar">🇸🇦 العربية</label>
+        <textarea id="ep-ar" rows="3" dir="rtl" spellcheck="true"></textarea>
+      </div>
+    </div>
+    <div class="ep-footer">
+      <button class="btn btn-primary" id="epSaveBtn">Save</button>
+      <button class="btn btn-outline" id="epCancelBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Add / Edit Project Dialog -->
+  <div id="projectDialogOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="projectDialogTitle">
+    <div class="admin-modal">
+      <div class="am-header">
+        <h2 id="projectDialogTitle" class="am-title">Add Project</h2>
+        <button class="am-close" id="projectDialogClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pd-title-en">Title (EN)</label>
+            <input type="text" id="pd-title-en" placeholder="Project Name" />
+          </div>
+          <div class="form-group">
+            <label for="pd-title-ar">Title (AR)</label>
+            <input type="text" id="pd-title-ar" dir="rtl" placeholder="اسم المشروع" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pd-desc-en">Description (EN)</label>
+          <textarea id="pd-desc-en" rows="3" placeholder="Short project description..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="pd-desc-ar">Description (AR)</label>
+          <textarea id="pd-desc-ar" rows="3" dir="rtl" placeholder="وصف قصير للمشروع..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pd-year">Year</label>
+            <input type="text" id="pd-year" placeholder="2025" maxlength="4" />
+          </div>
+          <div class="form-group">
+            <label for="pd-stack">Tech Stack <small>(comma-separated)</small></label>
+            <input type="text" id="pd-stack" placeholder="React, TypeScript, ..." />
+          </div>
+        </div>
+        <span class="field-error" id="pdError" role="alert"></span>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="projectDialogSaveBtn">Add Project</button>
+        <button class="btn btn-outline" id="projectDialogCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Skill Dialog -->
+  <div id="skillDialogOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="skillDialogTitle">
+    <div class="admin-modal">
+      <div class="am-header">
+        <h2 id="skillDialogTitle" class="am-title">Add Skill</h2>
+        <button class="am-close" id="skillDialogClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sd-title-en">Title (EN)</label>
+            <input type="text" id="sd-title-en" placeholder="Skill Area" />
+          </div>
+          <div class="form-group">
+            <label for="sd-title-ar">Title (AR)</label>
+            <input type="text" id="sd-title-ar" dir="rtl" placeholder="المجال" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="sd-desc-en">Description (EN)</label>
+          <textarea id="sd-desc-en" rows="3" placeholder="Describe this skill area..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="sd-desc-ar">Description (AR)</label>
+          <textarea id="sd-desc-ar" rows="3" dir="rtl" placeholder="صف هذا المجال..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="sd-tags">Technologies <small>(comma-separated)</small></label>
+          <input type="text" id="sd-tags" placeholder="React, TypeScript, ..." />
+        </div>
+        <span class="field-error" id="sdError" role="alert"></span>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="skillDialogSaveBtn">Add Skill</button>
+        <button class="btn btn-outline" id="skillDialogCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Settings Dialog -->
+  <div id="adminSettingsOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="admin-modal am-small">
+      <div class="am-header">
+        <h2 id="settingsTitle" class="am-title">Settings</h2>
+        <button class="am-close" id="settingsClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <p class="am-section-label">Contact Form</p>
+        <div class="form-group">
+          <label for="set-formspree">Formspree Endpoint</label>
+          <input type="url" id="set-formspree" placeholder="https://formspree.io/f/xxxxxxxx" />
+          <small class="field-hint">Get your free endpoint at <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a></small>
+        </div>
+        <div class="am-footer am-footer-inline">
+          <button class="btn btn-primary" id="settingsFormspreeBtn">Save Endpoint</button>
+          <span class="field-error" id="settingsFormspreeMsg" role="alert" style="margin-left:8px"></span>
+        </div>
+        <hr class="am-divider" />
+        <p class="am-section-label">Change Password</p>
+        <div class="form-group">
+          <label for="set-current-pw">Current Password</label>
+          <input type="password" id="set-current-pw" autocomplete="current-password" />
+        </div>
+        <div class="form-group">
+          <label for="set-new-pw">New Password</label>
+          <input type="password" id="set-new-pw" autocomplete="new-password" />
+        </div>
+        <div class="form-group">
+          <label for="set-confirm-pw">Confirm New Password</label>
+          <input type="password" id="set-confirm-pw" autocomplete="new-password" />
+          <span class="field-error" id="settingsPwError" role="alert"></span>
+        </div>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="settingsSaveBtn">Update Password</button>
+        <button class="btn btn-outline" id="settingsCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Social Link Dialog -->
+  <div id="linkDialogOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="linkDialogTitle">
+    <div class="admin-modal am-small">
+      <div class="am-header">
+        <h2 id="linkDialogTitle" class="am-title">Edit Link</h2>
+        <button class="am-close" id="linkDialogClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <div class="form-group">
+          <label for="ld-platform">Platform</label>
+          <select id="ld-platform">
+            <option value="github">GitHub</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="twitter">Twitter / X</option>
+            <option value="instagram">Instagram</option>
+            <option value="youtube">YouTube</option>
+            <option value="email">Email</option>
+            <option value="website">Website</option>
+            <option value="custom">Custom / Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ld-label-en">Name (EN)</label>
+            <input type="text" id="ld-label-en" placeholder="e.g. GitHub" />
+          </div>
+          <div class="form-group">
+            <label for="ld-label-ar">Name (AR)</label>
+            <input type="text" id="ld-label-ar" dir="rtl" placeholder="مثلاً: جيتهاب" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ld-url">URL / Email address</label>
+          <input type="text" id="ld-url" placeholder="https://..." />
+        </div>
+        <span class="field-error" id="ldError" role="alert"></span>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="linkDialogSaveBtn">Save</button>
+        <button class="btn btn-outline" id="linkDialogCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Floating Stat Card Dialog -->
+  <div id="fcDialogOverlay" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="fcDialogTitle">
+    <div class="admin-modal am-small">
+      <div class="am-header">
+        <h2 id="fcDialogTitle" class="am-title">Add Stat Card</h2>
+        <button class="am-close" id="fcDialogClose" aria-label="Close">×</button>
+      </div>
+      <div class="am-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fc-label-en">Label (EN)</label>
+            <input type="text" id="fc-label-en" placeholder="e.g. Projects" />
+          </div>
+          <div class="form-group">
+            <label for="fc-label-ar">Label (AR)</label>
+            <input type="text" id="fc-label-ar" dir="rtl" placeholder="مثلاً: مشاريع" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fc-val-en">Value (EN)</label>
+            <input type="text" id="fc-val-en" placeholder="e.g. 24+" />
+          </div>
+          <div class="form-group">
+            <label for="fc-val-ar">Value (AR)</label>
+            <input type="text" id="fc-val-ar" dir="rtl" placeholder="مثلاً: +24" />
+          </div>
+        </div>
+        <span class="field-error" id="fcError" role="alert"></span>
+      </div>
+      <div class="am-footer">
+        <button class="btn btn-primary" id="fcDialogSaveBtn">Add Card</button>
+        <button class="btn btn-outline" id="fcDialogCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
