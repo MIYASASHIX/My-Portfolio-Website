@@ -1603,23 +1603,35 @@ if (document.readyState === 'loading') {
     if (ep) { const f = document.getElementById('contactForm'); if (f) f.setAttribute('action', ep); }
   }
 
+  function revealPage() {
+    document.body.classList.remove('content-loading');
+  }
+
   function initAdmin() {
     wireAdminButtons();
 
-    // ── Step 1: apply localStorage instantly — no flash of default content ──
+    // ── Step 1: apply localStorage instantly ──
     loadStoredPhoto();
     applyStoredContent();
     applyEndpoint();
     if (isLoggedIn()) enterAdminMode();
 
-    // ── Step 2: sync from server in background, then silently re-apply ──
+    // If localStorage already had saved data, reveal immediately (returning visitor)
+    if (storageGet(STORAGE_CONTENT)) {
+      revealPage();
+    }
+
+    // ── Step 2: sync from server in background, then re-apply ──
     syncFromServer().then(() => {
       loadStoredPhoto();
       applyStoredContent();
       applyEndpoint();
-      // Re-run language pass so freshly-applied data-en/ar attrs render correctly
       applyLanguage(document.documentElement.getAttribute('data-lang') || 'en');
+      revealPage(); // reveal here for first-time visitors (localStorage was empty)
     });
+
+    // Safety fallback: always reveal after 3 s even if server is slow / offline
+    setTimeout(revealPage, 3000);
   }
 
   if (document.readyState === 'loading') {

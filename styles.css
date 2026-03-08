@@ -105,8 +105,14 @@ body {
   background: var(--bg);
   transition:
     background var(--transition-slow),
-    color var(--transition-slow);
+    color var(--transition-slow),
+    opacity 0.18s ease;
   overflow-x: hidden;
+}
+
+/* Hide content until saved data is applied — prevents flash of default placeholder text */
+body.content-loading {
+  opacity: 0;
 }
 
 [data-lang="ar"] body,
