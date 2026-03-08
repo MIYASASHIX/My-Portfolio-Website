@@ -1390,6 +1390,58 @@ if (document.readyState === 'loading') {
       showToast('All changes saved!');
     });
 
+    // Export — download full content store as JSON
+    document.getElementById('adminExportBtn')?.addEventListener('click', () => {
+      const payload = getContent();
+      payload.photo        = storageGet('pf_photo')         || null;
+      payload.formEndpoint = storageGet('pf_form_endpoint') || null;
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'portfolio-content.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Content exported!');
+    });
+
+    // Import — read JSON file, apply to localStorage, push to server
+    document.getElementById('adminImportInput')?.addEventListener('change', async e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid format');
+
+        // Restore photo and formEndpoint separately
+        if (data.photo !== undefined) {
+          if (data.photo) { storageSet('pf_photo', data.photo); }
+          else            { try { localStorage.removeItem('pf_photo'); } catch {} }
+          applyStoredPhoto(data.photo || null);
+        }
+        if (data.formEndpoint) {
+          storageSet('pf_form_endpoint', data.formEndpoint);
+          const formEl = document.getElementById('contactForm');
+          if (formEl) formEl.setAttribute('action', data.formEndpoint);
+        }
+        delete data.photo;
+        delete data.formEndpoint;
+
+        // Save content and apply to DOM
+        saveContentStore(data);
+        applyStoredContent();
+        applyLanguage(document.documentElement.getAttribute('data-lang') || 'en');
+
+        // Push everything to server
+        await pushToServer();
+        showToast('Content imported and synced to server!');
+      } catch (err) {
+        showToast('Import failed: invalid JSON file.');
+      }
+      e.target.value = '';
+    });
+
     document.getElementById('adminLogoutBtn')?.addEventListener('click', () => {
       if (confirm('Exit admin mode? Unsaved changes will be lost.')) exitAdminMode();
     });
