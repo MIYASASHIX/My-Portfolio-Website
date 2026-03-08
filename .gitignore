@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Server-side data store (content + admin hash — stays on the server, not in git)
+data/
+
 # Environment variables
 .env
 .env.*

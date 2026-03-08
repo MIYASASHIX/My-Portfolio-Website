@@ -462,6 +462,61 @@ if (document.readyState === 'loading') {
     try { localStorage.setItem(STORAGE_CONTENT, JSON.stringify(data)); } catch {}
   }
 
+  /* ── Server sync ────────────────────────────────────── */
+
+  /**
+   * Push the full content store (including photo + formEndpoint) to the server.
+   * Silently fails if offline or unauthenticated — localStorage is always updated first.
+   */
+  async function pushToServer() {
+    const hash = storageGet(STORAGE_ADMIN_HASH);
+    if (!hash) return;
+    const payload = getContent();
+    payload.photo        = storageGet('pf_photo')         || null;
+    payload.formEndpoint = storageGet('pf_form_endpoint') || null;
+    try {
+      await fetch('/api/content', {
+        method: 'POST',
+        headers: {
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + hash,
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch { /* offline — localStorage already updated */ }
+  }
+
+  /**
+   * Fetch content from the server and apply it locally.
+   * Called once on page load so every device sees the same data.
+   */
+  async function syncFromServer() {
+    try {
+      const res = await fetch('/api/content');
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data || typeof data !== 'object' || !Object.keys(data).length) return;
+
+      // Extract non-content keys before storing
+      const photo        = Object.prototype.hasOwnProperty.call(data, 'photo')        ? data.photo        : undefined;
+      const formEndpoint = Object.prototype.hasOwnProperty.call(data, 'formEndpoint') ? data.formEndpoint : undefined;
+      delete data.photo;
+      delete data.formEndpoint;
+
+      // Persist content to localStorage
+      saveContentStore(data);
+
+      // Persist photo (null means explicitly removed)
+      if (photo !== undefined) {
+        if (photo) { storageSet('pf_photo', photo); }
+        else        { try { localStorage.removeItem('pf_photo'); } catch {} }
+      }
+
+      // Persist Formspree endpoint
+      if (formEndpoint) storageSet('pf_form_endpoint', formEndpoint);
+    } catch { /* network error — fall back to localStorage */ }
+  }
+
   /** Snapshot the current DOM state into the content store and persist. */
   function snapshotAndSave() {
     const data = getContent();
@@ -544,6 +599,7 @@ if (document.readyState === 'loading') {
     });
 
     saveContentStore(data);
+    pushToServer();
   }
 
   /** Apply stored content to the DOM on page load. */
@@ -1228,7 +1284,18 @@ if (document.readyState === 'loading') {
     const currentHash = await sha256(current);
     if (currentHash !== getStoredHash()) { errEl.textContent = 'Current password is incorrect.'; return; }
 
-    setStoredHash(await sha256(newPw));
+    const newHash = await sha256(newPw);
+    setStoredHash(newHash);
+
+    // Sync new password hash to server
+    try {
+      await fetch('/api/auth/password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ oldHash: currentHash, newHash }),
+      });
+    } catch { /* offline — local hash updated, server will be out of sync until next push */ }
+
     ['set-current-pw','set-new-pw','set-confirm-pw'].forEach(id => { document.getElementById(id).value = ''; });
     closeModal('adminSettingsOverlay');
     showToast('Password updated successfully.');
@@ -1379,6 +1446,7 @@ if (document.readyState === 'loading') {
       try { localStorage.setItem('pf_form_endpoint', val); } catch (_) {}
       const form = document.getElementById('contactForm');
       if (form) form.setAttribute('action', val);
+      pushToServer();
       msgEl.textContent = 'Saved!';
       msgEl.style.color = '#22c55e';
       setTimeout(() => { msgEl.textContent = ''; }, 2500);
@@ -1423,6 +1491,7 @@ if (document.readyState === 'loading') {
         const data = ev.target.result;
         try { localStorage.setItem('pf_photo', data); } catch (_) {/* quota */}
         applyStoredPhoto(data);
+        pushToServer();
       };
       reader.readAsDataURL(file);
       e.target.value = '';
@@ -1431,6 +1500,7 @@ if (document.readyState === 'loading') {
     document.getElementById('photoRemoveBtn')?.addEventListener('click', () => {
       localStorage.removeItem('pf_photo');
       applyStoredPhoto(null);
+      pushToServer();
     });
 
     // Keyboard shortcut: Ctrl+Shift+A
@@ -1468,8 +1538,10 @@ if (document.readyState === 'loading') {
   }
 
   /* ── Init admin module ──────────────────────────────── */
-  function initAdmin() {
+  async function initAdmin() {
     wireAdminButtons();
+    // Fetch latest content from server first (so all devices stay in sync)
+    await syncFromServer();
     loadStoredPhoto();
     // Apply any previously saved content on every page load
     applyStoredContent();
